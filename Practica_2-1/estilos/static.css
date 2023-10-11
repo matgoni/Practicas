@@ -50,3 +50,10 @@ div#profile-photo {
     width: 10px;
     margin-right: 10px; 
 }
+#stats{
+    max-width: 100%;
+}
+footer {
+    padding: 10px 15px;
+    margin: 30px 160px;
+}
