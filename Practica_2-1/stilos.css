@@ -15,10 +15,12 @@ header{
 }
 
 header ul{
+  text-align: left;
+}
+ul{
   margin: 7px;
 }
-
-header li{
+li{
   display: inline;
   padding-left: 5px;
   padding-right: 5px;
@@ -67,14 +69,21 @@ div.contentInfo p{
   margin: 2px 0;
 }
 /* Profile img */
-div#imgBackground{
+div#imgBackground {
   border: 0;
+  text-align: center;
 }
+
+div#imgBackground p {
+  padding: 2px 0 10px 0;
+  margin: 0;
+}
+
 div#centrar-contenedor {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 30px 30px 0 30px;
 }
 
 div#profile-photo {
@@ -85,8 +94,7 @@ div#profile-photo {
   height: 200px;
   overflow: hidden;
   border: 2px solid #333;
-  border-block: 50%; 
-  margin-right: 90px;
+  border-block: 50%;
 }
 
 div#profile-photo img {
@@ -98,25 +106,6 @@ div#profile-photo img {
 div.buttons{
   background-color: #283649;
 }
-
-
-.barra2 li {
-  display: inline; 
-  margin-right: 20px; 
-}
-
-.barra2 a {
-  color: #88c7ef; 
-}
-
-body {
-  background-image: url('imagenes/imagen2.jpg'); 
-  background-size: cover; 
-  background-attachment: fixed; 
-  padding: 20px; 
-  color: white;
-}
-
 
 .centrar-contenedor {
   display: flex;
@@ -142,42 +131,39 @@ body {
   object-fit: cover; 
 }
 
+/* Buttons */
+div.buttons{
+  display: flex;
+}
 .button-icon {
   display: flex;
   align-items: center;
+  height: 20px;
+  margin: 5px;
+}
+.button-icon img {
+  width: 10px;
+  margin-right: 10px; 
 }
 
-.button-icon img {
-  width: 15px; /* Ajusta el tamaño de la imagen según tus necesidades */
-  margin-right: 10px; /* Espacio entre la imagen y el texto */
-}
+/*------- footer --------*/
 footer {
   background-color: #001e3e;
+  padding: 10px 15px;
+  margin: 30px 160px;
+}
+
+footer p{
   color: white;
-  font-size: 1.3em;
-  padding-left: 105px;
+  padding-left: 5px;
+  margin: 0;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
+footer ul{
+  padding-left: 0;
+  margin: 2px 0;
 }
-
-ul li {
-  color: blue;
-  text-decoration: underline;
-  display: inline;
-  margin-right: 10px;
+span.barra{
+  color: #ffffff;
+  padding-left: 10px;
 }
-ul li p {
-  color:white;
-  display: inline;
-  margin-right: 10px;
-}
-
-p i {
-  color: white;
-}
-
