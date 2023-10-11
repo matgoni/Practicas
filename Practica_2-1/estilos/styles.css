@@ -1,14 +1,17 @@
+@import url('static.css') screen and (min-width: 769px);
+@import url('liquid.css') screen and (max-width: 768px);
+
 /* ----- Body ---- */
 body{
   margin: 0;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  background-image: url('imagenes/imagen2.jpg');
+  background-image: url('../imagenes/imagen2.jpg');
 }
 a{
   color: rgb(98, 163, 209); 
 }
-
 /*--------Header-------*/
+
 header{
   margin: 0;
 }
@@ -17,58 +20,35 @@ header ul{
   text-align: left;
 }
 
-ul{
-  margin: 7px;
-}
-
 li{
   display: inline;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-header div{
-  padding: .5px 50px;
 }
 
 div#sectionOne {
   background-color:#283649;
 }
-
 div#sectionTwo {
   background-color: #001e3e;
   color: white;
-  font-size: 1.3em;
-  padding-left: 105px;
 }
-
 div#sectionThree{
   background-color: #dae1e8;
-  font-size: 1.5em;
 }
-
 /* ------ Content ----*/
 div.content{
   background-color: white;
-  margin: 30px 160px;
   border: 3px solid black;
 }
 
 div.content h2{
   background-color: #001e3e;
   margin: 0;
-  padding: 15px 20px;
   color: white;
 }
 i.ital-grey{
   color: grey;
 }
-div.contentInfo{
-  padding: 20px 10px;
-}
-div.contentInfo p{
-  margin: 2px 0;
-}
+
 /* Profile img */
 div#imgBackground {
   border: 0;
@@ -84,15 +64,12 @@ div#centrar-contenedor {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 30px 0 30px;
 }
 
 div#profile-photo {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 200px;
   overflow: hidden;
   border: 2px solid #333;
   border-block: 50%;
@@ -118,8 +95,6 @@ div.buttons{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 200px;
   overflow: hidden;
   border: 2px solid #333;
   border-block: 50%; 
@@ -139,12 +114,6 @@ div.buttons{
 .button-icon {
   display: flex;
   align-items: center;
-  height: 20px;
-  margin: 5px;
-}
-.button-icon img {
-  width: 10px;
-  margin-right: 10px; 
 }
 
 /*------- footer --------*/
