@@ -1,0 +1,54 @@
+ul {
+    margin: 2%;
+}
+    
+li {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+    
+div.content {
+    margin: 2% 10%;
+}
+    
+div.content h2 {
+    padding: 1% 2%;
+}
+    
+div.contentInfo {
+    padding: 2% 1%;
+}
+    
+div.contentInfo p {
+    margin: 1% 0;
+}
+    
+div#centrar-contenedor {
+    padding: 2% 2% 0 2%;
+}
+    
+div#profile-photo img {
+    width: 90%;
+    height: 90%;
+
+}
+
+.profile-photo {
+    width: 150%;
+    height: 150;
+}
+
+.button-icon {
+    height: 2%;
+    margin: 1%;
+}
+
+.button-icon img {
+    width: 1%;
+    margin-right: 2%;
+}
+
+footer {
+    padding: 1% 2%;
+    margin: 3% 10%;
+}
