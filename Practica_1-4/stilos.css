@@ -1,91 +1,181 @@
+/* ----- Body ---- */
+body{
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-image: url('imagenes/imagen2.jpg');
+}
+a{
+  color: rgb(98, 163, 209); 
+}
 
-.barra {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100% ;
-    background-color:#283649; 
-    padding: 100 px; 
-    z-index: 9999; 
-  }
-  
-  .barra ul {
-    list-style: none; 
-    padding: 0;
-    margin: 0;
-  }
-  
-  .barra li {
-    display: inline; 
-    margin-right: 20px; 
-  }
-  
-  .barra a {
-    color: rgb(0, 81, 255); 
-  }
-  
-  .titulo {
-    position: sticky;
-    top: 0;
-    right: 0;
-    background-color: #001e3e;
-    padding: 6px; 
-    width: 100%
-  }
-  
-  .titulo {
-   color: white;
-  }
-  
-  .barra2{
-    background-color: #dae1e8;
-  }
-  
-  .barra2 ul {
-    list-style: none; 
-    padding: 0;
-    margin: 0;
-  }
-  
-  .barra2 li {
-    display: inline; 
-    margin-right: 20px; 
-  }
-  
-  .barra2 a {
-    color: #88c7ef; 
-  }
-  
-  body {
-    background-image: url('imagenes/imagen2.jpg'); 
-    background-size: cover; 
-    background-attachment: fixed; 
-    padding: 20px; 
-    color: white;
-  }
-  
-  
-  .centrar-contenedor {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .profile-photo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    border: 2px solid #333;
-    border-block: 50%; 
-    margin-right: 90px;
-  }
-  
-  .profile-photo img {
-    width: 90%; 
-    height: 90%; 
-    object-fit: cover; 
-  }
-  
+/*--------Header-------*/
+
+header{
+  margin: 0;
+}
+
+header ul{
+  margin: 7px;
+}
+
+header li{
+  display: inline;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+header div{
+  padding: .5px 50px;
+}
+
+div#sectionOne {
+  background-color:#283649;
+}
+
+div#sectionTwo {
+  background-color: #001e3e;
+  color: white;
+  font-size: 1.3em;
+  padding-left: 105px;
+}
+
+div#sectionThree{
+  background-color: #dae1e8;
+  font-size: 1.5em;
+}
+
+/* ------ Content ----*/
+div.content{
+  background-color: white;
+  margin: 30px 160px;
+  border: 3px solid black;
+}
+
+div.content h2{
+  background-color: #001e3e;
+  margin: 0;
+  padding: 15px 20px;
+  color: white;
+}
+i.ital-grey{
+  color: grey;
+}
+div.contentInfo{
+  padding: 20px 10px;
+}
+div.contentInfo p{
+  margin: 2px 0;
+}
+/* Profile img */
+div#imgBackground{
+  border: 0;
+}
+div#centrar-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+div#profile-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 2px solid #333;
+  border-block: 50%; 
+  margin-right: 90px;
+}
+
+div#profile-photo img {
+  width: 90%; 
+  height: 90%; 
+  object-fit: cover; 
+}
+
+div.buttons{
+  background-color: #283649;
+}
+
+.barra2 li {
+  display: inline; 
+  margin-right: 20px; 
+}
+
+.barra2 a {
+  color: #88c7ef; 
+}
+
+body {
+  background-image: url('imagenes/imagen2.jpg'); 
+  background-size: cover; 
+  background-attachment: fixed; 
+  padding: 20px; 
+  color: white;
+}
+
+
+.centrar-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 2px solid #333;
+  border-block: 50%; 
+  margin-right: 90px;
+}
+
+.profile-photo img {
+  width: 90%; 
+  height: 90%; 
+  object-fit: cover; 
+}
+
+.button-icon {
+  display: flex;
+  align-items: center;
+}
+
+.button-icon img {
+  width: 15px; /* Ajusta el tamaño de la imagen según tus necesidades */
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+footer {
+  background-color: #001e3e;
+  color: white;
+  font-size: 1.3em;
+  padding-left: 105px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+ul li {
+  color: blue;
+  text-decoration: underline;
+  display: inline;
+  margin-right: 10px;
+}
+ul li p {
+  color:white;
+  display: inline;
+  margin-right: 10px;
+}
+
+p i {
+  color: white;
+}

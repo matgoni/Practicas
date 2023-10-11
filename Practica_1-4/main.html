@@ -1,73 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Document</title>
     <link rel="stylesheet" href="stilos.css">
 </head>
 <body>
     <header>
-        <div class="barra">
+        <div id="sectionOne">
             <ul>
-                <li><a href="Home" >Home</a></li>
-                <li><a href="Catalog">Catalog</a></li>
-                <li><a href="Inventory">Inventory</a></li>
+                <li><a href="#" >Home</a></li>
+                <li><a href="#">Catalog</a></li>
+                <li><a href="#">Inventory</a></li>
             </ul>
         </div>
-        <div class="titulo">
+        
+        <div id="sectionTwo">
             <h1>!aCRM</h1>
         </div>
-        <div class="barra2">
+
+        <div id="sectionThree">
             <ul>
-                <li><a href="Contacts">Contacts</a></li>
-                <li><a href="Contacts">Orders</a></li>
-                <li><a href="Contacts">Calendar</a></li>
-                <li><a href="Contacts">Tasks</a></li>
-                <li><a href="Contacts">Evaluatopm Coples</a></li>
+                <li><a href="#">Contacts</a></li>
+                <li><a href="#">Orders</a></li>
+                <li><a href="#">Calendar</a></li>
+                <li><a href="#">Tasks</a></li>
+                <li><a href="#">Evaluatopm Copies</a></li>
             </ul>
         </div>
     </header>
-    <div class="img-background">
-        <br>
 
-        <div class="centrar-contenedor">
-            <div class="profile-photo">
-            <img src="imagenes/imagen1.jpg" alt="Profile Photo">
+    <div id="imgBackground" class="content">
+        <div id="centrar-contenedor">
+            <div id="profile-photo">
+                <img src="imagenes/imagen1.jpg" alt="Profile Photo">
             </div>
         </div>
+        <p>Jack Smith</p>
+    </div>
 
-        </div>
-        <div class="details">
-            <h2>Personal Details</h2>
+    <div id="personalDetails" class="content">
+        <h2>Personal Details</h2>
+        <div class="contentInfo">
             <p><i class="ital-grey">Address:</i> Microsoft Way</p>
             <p><i class="ital-grey">City:</i> Redmond</p>
             <p><i class="ital-grey">Region:</i> WA</p>
             <p><i class="ital-grey">Country:</i> USA</p>
             <p><i class="ital-grey">Postal:</i> 9805-8300</p>
-
-            </div>
-        <div class="contact-details">
-            <h2>Contact Details</h2>
-            <p><i class="ital-grey">Phone:</i> <a href="">+1(425)82-8080</a></p>
-            <p><i class="ital-grey">Email:</i> <a href="">jacksmith@microsoft.com</a></p>
-            
         </div>
-        
-            <div>
-
-            </div>
-            <div>
-                <h2>Sales Activity</h2>
-                <img src="" alt="">
-            </div>
+        <div class="buttons">
+            <button class="button-icon">
+                <img src="imagenes/imagen4.jpg" alt="icono">
+                <p><a href="#">Edit</a></p>
+            </button>
+            <button class="button-icon">
+                <img src="imagenes/imagen5.png" alt="icono">
+                <p><a href="#">flag</a></p>
+            </button>
         </div>
-        <footer>
-            <ul>
-                <li>Home</li>
-                <li>Catalog</li>
-                <li>Inventory</li>
-            </ul>
-            <p><i>Copyright &copy; 2023 Not a Real CRM</i></p>
-        </footer>
+    </div>
+
+    <div class="content">
+        <h2>Contact Details</h2>
+        <div class="contentInfo">
+            <p><i class="ital-grey">Phone:</i> <a href="#">+1(425)82-8080</a></p>
+            <p><i class="ital-grey">Email:</i> <a href="#">jacksmith@microsoft.com</a></p>
+        </div>
+        <div class="buttons">
+            <button class="button-icon">
+                <img src="imagenes/imagen4.jpg" alt="icono">
+                <p><a href="#">Edit</a></p>
+            </button>
+            <button class="button-icon">
+                <img src="imagenes/imagen5.png" alt="icono">
+                <p><a href="#">flag</a></p>
+            </button>
+        </div>
+    </div>
+    
+    <div class="content">
+        <h2>Sales Activity</h2>
+        <img src="./imagenes/imagen3.png" alt="">
+    </div>
+
+    <footer>
+        <ul>
+            <li>Home <p> | </p></li>
+            <li>Catalog <p> |</p></li>
+            <li>Inventory </li>
+        </ul>
+        <p><i>Copyright &copy; 2023 Not a Real CRM</i></p>
+    </footer>
 </div>
 </body>
