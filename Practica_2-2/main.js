@@ -42,7 +42,28 @@ class game {
     }
 
     shuffleNumbers() {
-        // Lógica para revolver las fichas del rompecabezas
+        const tileIndices = this.grid.tiles
+        .map((tile, index) => tile.number === '' ? -1 : index)
+        .filter(index => index !== -1);
+
+        for (let i = tileIndices.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [tileIndices[i], tileIndices[j]] = [tileIndices[j], tileIndices[i]];
+        }
+
+        tileIndices.forEach((newIndex, oldIndex) => {
+            [this.grid.tiles[oldIndex], this.grid.tiles[newIndex]] = [this.grid.tiles[newIndex], this.grid.tiles[oldIndex]];
+        });
+
+        this.grid.tiles.forEach((tile, index) => {
+        if (tile.number !== '') {
+            this.grid.grid.replaceChild(tile.element, this.grid.grid.children[index]);
+        }
+    });
+
+    this.moves = 0;
+    this.countElement.textContent = this.moves;
+    this.timerElement.textContent = "00:00";
     }
 
     handleButtonClick(button) {
