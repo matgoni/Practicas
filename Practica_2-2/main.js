@@ -1,82 +1,89 @@
-class buttonNumber {
-    constructor(number) {
-        this.number = number;
-        this.element = document.createElement('button');
-        this.element.className = 'number';
-        this.element.textContent = number;
-        this.element.addEventListener('click', () => this.click());
-    }
-
-    click() {
-        // Lógica para manejar el clic en una ficha del rompecabezas
-    }
-}
-
-class PuzzleGrid {
+class Juego {
     constructor() {
-        this.grid = document.getElementById('grid');
-        this.button = [];
-        for (let i = 1; i <= 15; i++) {
-            const button = new buttonNumber(i);
-            this.button.push(button);
+        this.cuadricula = document.getElementById("cuadricula");
+        this.botonInicio = document.getElementById("boton-inicio");
+        this.contadorSpan = document.getElementById("contador");
+        this.temporizadorSpan = document.getElementById("temporizador");
 
-            this.grid.appendChild(button.element);
+        this.rompecabezas = [];
+        this.botonVacio = null;
+        this.enJuego = false;
+        this.movimientos = 0;
+        this.intervaloTemporizador = null;
+
+        this.botonInicio.addEventListener("click", this.iniciarJuego.bind(this));
+        this.cuadricula.addEventListener("click", (e) => this.manipularBoton(e));
+
+        this.inicializar();
+    }
+
+    inicializar() {
+        this.construirRompecabezas();
+        this.mezclarRompecabezas();
+    }
+
+    construirRompecabezas() {
+        // Crear una matriz bidimensional para representar el rompecabezas
+        // Llenar la cuadrícula con botones y números
+        // Registrar los botones en la matriz del rompecabezas
+        // Establecer el botón vacío
+    }
+
+    mezclarRompecabezas() {
+        // Implementa la lógica para mezclar el rompecabezas
+        // ...
+    }
+
+    iniciarJuego() {
+        if (!this.enJuego) {
+            this.inicializar();
+            this.botonInicio.disabled = true;
+            this.enJuego = true;
+            let segundos = 0;
+            this.intervaloTemporizador = setInterval(() => {
+                segundos++;
+                const minutos = Math.floor(segundos / 60);
+                const segundosFormateados = String(segundos % 60).padStart(2, "0");
+                this.temporizadorSpan.textContent = `${minutos}:${segundosFormateados}`;
+            }, 1000);
         }
+    }
 
-        const emptyButton = new buttonNumber('');
-        emptyButton.element.classList.add('empty');
-        this.button.push(emptyButton);
-        this.grid.appendChild(emptyButton.element);
+    manipularBoton(evento) {
+        if (this.enJuego) {
+            const boton = evento.target;
+            if (boton.className === "numero") {
+                const [fila, columna] = this.obtenerPosicion(boton);
+
+                if (this.esAdyacente(this.botonVacio, fila, columna)) {
+                    // Implementar la lógica para intercambiar botones
+                    // ...
+                    this.movimientos++;
+                    this.contadorSpan.textContent = this.movimientos;
+
+                    if (this.estaResuelto()) {
+                        clearInterval(this.intervaloTemporizador);
+                        alert("¡Ganaste! ¡Rompecabezas resuelto!");
+                    }
+                }
+            }
+        }
+    }
+
+    obtenerPosicion(boton) {
+        // Obtiene la posición de un botón en la matriz del rompecabezas
+        // Devuelve un arreglo [fila, columna]
+    }
+
+    esAdyacente(boton1, fila, columna) {
+        // Implementa la lógica para verificar si dos botones son adyacentes
+    }
+
+    estaResuelto() {
+        // Implementa la lógica para verificar si el rompecabezas se ha resuelto
+        // Devuelve true si el rompecabezas está resuelto
     }
 }
 
-class game {
-    constructor() {
-        this.grid = new PuzzleGrid();
-        this.countElement = document.getElementById('count');
-        this.timerElement = document.getElementById('timer');
-        this.startButton = document.getElementById('start-button');
-        this.moves = 0;
-
-        this.shuffleNumbers();
-    }
-
-    shuffleNumbers() {
-        const tileIndices = this.grid.tiles
-        .map((tile, index) => tile.number === '' ? -1 : index)
-        .filter(index => index !== -1);
-
-        for (let i = tileIndices.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [tileIndices[i], tileIndices[j]] = [tileIndices[j], tileIndices[i]];
-        }
-
-        tileIndices.forEach((newIndex, oldIndex) => {
-            [this.grid.tiles[oldIndex], this.grid.tiles[newIndex]] = [this.grid.tiles[newIndex], this.grid.tiles[oldIndex]];
-        });
-
-        this.grid.tiles.forEach((tile, index) => {
-        if (tile.number !== '') {
-            this.grid.grid.replaceChild(tile.element, this.grid.grid.children[index]);
-        }
-    });
-
-    this.moves = 0;
-    this.countElement.textContent = this.moves;
-    this.timerElement.textContent = "00:00";
-    }
-
-    handleButtonClick(button) {
-        // Lógica para manejar el clic en una ficha del rompecabezas
-    }
-
-    isPuzzleSolved() {
-        // Lógica para verificar si el rompecabezas se ha resuelto
-    }
-
-    startGame() {
-        // Lógica para iniciar el juego
-    }
-}
-
-const game = new game();
+// Inicializa el juego
+const juego = new Juego()
