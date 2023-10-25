@@ -124,9 +124,18 @@ class Juego {
         }
     }
 
-    obtenerPosicion(boton) {
-        // Obtiene la posición de un botón en la matriz del rompecabezas
-        // Devuelve un arreglo [fila, columna]
+    obtenerPosicion(boton) 
+    {
+        for(let i = 0; i < this.rompecabezas.length; i ++)
+        {
+            for(let j = 0; j < this.rompecabezas[i].length; j ++) 
+            {
+                if(this.rompecabezas [i][j] === boton)
+                {
+                    return [i, j];
+                }
+            }
+        }
     }
 
     esAdyacente(boton1, fila, columna) {
