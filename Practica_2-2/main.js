@@ -56,24 +56,27 @@ class Juego {
                 const [fila, columna] = this.obtenerPosicion(ultimoBoton);
     
                 if (this.esAdyacente(this.botonVacio, fila, columna - 1)) {
-                    botonesAdyacentes.push(this.botonVacio);
+                    botonesAdyacentes.push(this.rompecabezas[fila][columna - 1]);
                 }
                 if (this.esAdyacente(this.botonVacio, fila, columna + 1)) {
-                    botonesAdyacentes.push(this.botonVacio);
+                    botonesAdyacentes.push(this.rompecabezas[fila][columna + 1]);
                 }
                 if (this.esAdyacente(this.botonVacio, fila - 1, columna)) {
-                    botonesAdyacentes.push(this.botonVacio);
+                    botonesAdyacentes.push(this.rompecabezas[fila - 1][columna]);
                 }
                 if (this.esAdyacente(this.botonVacio, fila + 1, columna)) {
-                    botonesAdyacentes.push(this.botonVacio);
+                    botonesAdyacentes.push(this.rompecabezas[fila + 1][columna]);
                 }
             }
     
             const botonAleatorio = botonesAdyacentes[Math.floor(Math.random() * botonesAdyacentes.length)];
-            this.intercambiarBotones(ultimoBoton, botonAleatorio);
-            ultimoBoton = botonAleatorio;
+            if (botonAleatorio) {
+                this.intercambiarBotones(this.botonVacio, botonAleatorio);
+                ultimoBoton = botonAleatorio;
+            }
         }
-    }        
+    }
+            
     
 
     intercambiarBotones(boton1, boton2) {
@@ -183,5 +186,4 @@ class Juego {
     }
 }
 
-// Inicializa el juego
 const juego = new Juego()
