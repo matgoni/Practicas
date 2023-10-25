@@ -11,8 +11,7 @@ class Juego {
       this.movimientos = 0;
       this.intervaloTemporizador = null;
   
-      // Cambiar el evento al botón de "Jugar" para controlar tanto el inicio como la mezcla
-      this.botonInicio.addEventListener("click", () => this.controlarJuego());
+      this.botonInicio.addEventListener("click", this.controlarJuego.bind(this));
   
       this.inicializar();
     }
@@ -71,22 +70,17 @@ class Juego {
   
     controlarJuego() {
       if (this.enJuego) {
-        // Si ya está en juego, reinicia el rompecabezas
+        this.botonInicio.textContent = "Jugar";
+        this.enJuego = false;
+      } else {
+        this.botonInicio.textContent = "Mezclar";
+        this.enJuego = true;
         this.inicializar();
         this.mezclarRompecabezas();
         this.movimientos = 0;
         this.contadorSpan.textContent = this.movimientos;
         this.temporizadorSpan.textContent = "0:00";
         clearInterval(this.intervaloTemporizador);
-      } else {
-        // Si no está en juego, comienza el juego
-        this.enJuego = true;
-        this.botonInicio.textContent = "Mezclar"; // Cambiar el texto del botón a "Mezclar"
-        this.botonInicio.disabled = true;
-        this.mezclarRompecabezas();
-        this.movimientos = 0;
-        this.contadorSpan.textContent = this.movimientos;
-        this.temporizadorSpan.textContent = "0:00";
         this.intervaloTemporizador = setInterval(() => {
           this.actualizarTemporizador();
         }, 1000);
@@ -124,7 +118,7 @@ class Juego {
             if (this.estaResuelto()) {
               clearInterval(this.intervaloTemporizador);
               alert("¡Ganaste! ¡Rompecabezas resuelto!");
-              this.botonInicio.textContent = "Mezclar"; // Cambiar el texto del botón a "Mezclar"
+              this.botonInicio.textContent = "Jugar";
               this.enJuego = false;
             }
           }
@@ -158,7 +152,6 @@ class Juego {
         }
       }
   
-      // Verificar que el último valor en el rompecabezas es el botón vacío
       const ultimoBoton = this.rompecabezas[numRows - 1][numCols - 1];
       return ultimoBoton.textContent === "";
     }
