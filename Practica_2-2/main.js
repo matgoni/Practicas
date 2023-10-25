@@ -130,8 +130,24 @@ class Juego {
     }
 
     esAdyacente(boton1, fila, columna) {
-        // Implementa la lógica para verificar si dos botones son adyacentes
+        if (boton1) {
+            const [botonFila, botonColumna] = this.obtenerPosicion(boton1);
+    
+            const esMismaFila = botonFila === fila;
+            const esMismaColumna = botonColumna === columna;
+    
+            if (esMismaFila && Math.abs(botonColumna - columna) === 1) {
+                return true;
+            }
+    
+            if (esMismaColumna && Math.abs(botonFila - fila) === 1) {
+                return true;
+            }
+        }
+    
+        return false;
     }
+    
 
     estaResuelto() {
         // Implementa la lógica para verificar si el rompecabezas se ha resuelto
