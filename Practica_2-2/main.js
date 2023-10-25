@@ -23,40 +23,30 @@ class Juego {
     }
 
     construirRompecabezas() {
-        // Crear una matriz bidimensional para representar el rompecabezas
-        // Llenar la cuadrícula con botones y números
-        // Registrar los botones en la matriz del rompecabezas
-        // Establecer el botón vacío
+        const numRows = 4;
+        const numCols = 4;
+        this.rompecabezas = new Array(numRows);
+
+        for (let i = 0; i< numRows; i++)
+        {
+            this.rompecabezas[i] = new Array (numCols);
+            for(let j = 0; j < numCols; j++)
+            {
+                const button = document.createElement("button");
+                button.className = "numero";
+                button.textContent = i * numCols + j + 1;
+                this.cuadricula.appendChild(button);
+                this.rompecabezas[i][j] = button;
+                button.addEventListener("click", (event) => this.manipularBoton(event));
+            }
+        }
+        this.rompecabezas[numRows -1][numCols -1].textContent = "";
+        this.botonVacio = this.rompecabezas[numRows -1][numCols -1];
     }
 
     mezclarRompecabezas() {
-        const cantidadMovimientosAleatorios = 100;
-        let ultimoBoton = null;
-    
-        for (let i = 0; i < cantidadMovimientosAleatorios; i++) {
-            const botonesAdyacentes = [];
-    
-            if (ultimoBoton) {
-                const [fila, columna] = this.obtenerPosicion(ultimoBoton);
-    
-                if (this.esAdyacente(this.botonVacio, fila, columna - 1)) {
-                    botonesAdyacentes.push(this.botonVacio);
-                }
-                if (this.esAdyacente(this.botonVacio, fila, columna + 1)) {
-                    botonesAdyacentes.push(this.botonVacio);
-                }
-                if (this.esAdyacente(this.botonVacio, fila - 1, columna)) {
-                    botonesAdyacentes.push(this.botonVacio);
-                }
-                if (this.esAdyacente(this.botonVacio, fila + 1, columna)) {
-                    botonesAdyacentes.push(this.botonVacio);
-                }
-            }
-    
-            const botonAleatorio = botonesAdyacentes[Math.floor(Math.random() * botonesAdyacentes.length)];
-            this.intercambiarBotones(ultimoBoton, botonAleatorio);
-            ultimoBoton = botonAleatorio;
-        }
+        // Implementa la lógica para mezclar el rompecabezas
+        // ...
     }
 
     iniciarJuego() {
@@ -108,17 +98,6 @@ class Juego {
         // Implementa la lógica para verificar si el rompecabezas se ha resuelto
         // Devuelve true si el rompecabezas está resuelto
     }
-
-    intercambiarBotones(boton1, boton2) {
-        const tempGridRow = boton1.style.gridRow;
-        const tempGridColumn = boton1.style.gridColumn;
-    
-        boton1.style.gridRow = boton2.style.gridRow;
-        boton1.style.gridColumn = boton2.style.gridColumn;
-    
-        boton2.style.gridRow = tempGridRow;
-        boton2.style.gridColumn = tempGridColumn;
-    }    
 }
 
 // Inicializa el juego
