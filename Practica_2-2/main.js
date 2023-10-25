@@ -160,8 +160,26 @@ class Juego {
     
 
     estaResuelto() {
-        // Implementa la lógica para verificar si el rompecabezas se ha resuelto
-        // Devuelve true si el rompecabezas está resuelto
+        const numRows = this.rompecabezas.length;
+        const numCols = this.rompecabezas[0].length;
+        let valorEsperado = 1;
+
+        for(let i = 0; i < numRows; i ++)
+        {
+            for(let j = 0; j < numCols; j++)
+            {
+                if(this.rompecabezas[i][j].textContent !== "")
+                {
+                    const valorActual = parseInt (this. rompecabezas[i][j].textContent);
+                    if(valorActual !== valorEsperado)
+                    {
+                        return false;
+                    }
+                    valorEsperado ++;
+                }
+            }
+        }
+        return true;
     }
 }
 
