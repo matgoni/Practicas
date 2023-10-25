@@ -11,7 +11,8 @@ class Juego {
       this.movimientos = 0;
       this.intervaloTemporizador = null;
   
-      this.botonInicio.addEventListener("click", this.iniciarJuego.bind(this));
+      // Cambiar el evento al botón de "Jugar" para controlar tanto el inicio como la mezcla
+      this.botonInicio.addEventListener("click", () => this.controlarJuego());
   
       this.inicializar();
     }
@@ -21,7 +22,7 @@ class Juego {
     }
   
     construirRompecabezas() {
-      this.cuadricula.innerHTML = ""; // Limpia la cuadrícula anterior
+      this.cuadricula.innerHTML = "";
   
       const numRows = 4;
       const numCols = 4;
@@ -68,11 +69,20 @@ class Juego {
       boton2.textContent = tempText;
     }
   
-    iniciarJuego() {
-      if (!this.enJuego) {
-        this.enJuego = true;
-        this.botonInicio.disabled = true;
+    controlarJuego() {
+      if (this.enJuego) {
+        // Si ya está en juego, reinicia el rompecabezas
         this.inicializar();
+        this.mezclarRompecabezas();
+        this.movimientos = 0;
+        this.contadorSpan.textContent = this.movimientos;
+        this.temporizadorSpan.textContent = "0:00";
+        clearInterval(this.intervaloTemporizador);
+      } else {
+        // Si no está en juego, comienza el juego
+        this.enJuego = true;
+        this.botonInicio.textContent = "Mezclar"; // Cambiar el texto del botón a "Mezclar"
+        this.botonInicio.disabled = true;
         this.mezclarRompecabezas();
         this.movimientos = 0;
         this.contadorSpan.textContent = this.movimientos;
@@ -114,6 +124,8 @@ class Juego {
             if (this.estaResuelto()) {
               clearInterval(this.intervaloTemporizador);
               alert("¡Ganaste! ¡Rompecabezas resuelto!");
+              this.botonInicio.textContent = "Mezclar"; // Cambiar el texto del botón a "Mezclar"
+              this.enJuego = false;
             }
           }
         }
@@ -145,7 +157,10 @@ class Juego {
           }
         }
       }
-      return true;
+  
+      // Verificar que el último valor en el rompecabezas es el botón vacío
+      const ultimoBoton = this.rompecabezas[numRows - 1][numCols - 1];
+      return ultimoBoton.textContent === "";
     }
   }
   
