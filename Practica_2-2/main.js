@@ -108,13 +108,13 @@ class Juego {
             const boton = evento.target;
             if (boton.className === "numero") {
                 const [fila, columna] = this.obtenerPosicion(boton);
-
+    
                 if (this.esAdyacente(this.botonVacio, fila, columna)) {
-                    // Implementar la lógica para intercambiar botones
-                    // ...
+                    this.intercambiarBotones(this.botonVacio, boton);
                     this.movimientos++;
                     this.contadorSpan.textContent = this.movimientos;
-
+                    this.botonVacio = boton; // Actualiza el botón vacío
+    
                     if (this.estaResuelto()) {
                         clearInterval(this.intervaloTemporizador);
                         alert("¡Ganaste! ¡Rompecabezas resuelto!");
@@ -123,6 +123,7 @@ class Juego {
             }
         }
     }
+    
 
     obtenerPosicion(boton) 
     {
