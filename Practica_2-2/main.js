@@ -21,6 +21,8 @@ class Juego {
     }
   
     construirRompecabezas() {
+      this.cuadricula.innerHTML = ""; // Limpia la cuadrícula anterior
+  
       const numRows = 4;
       const numCols = 4;
       this.rompecabezas = new Array(numRows);
@@ -37,7 +39,9 @@ class Juego {
       this.botonVacio = this.rompecabezas[numRows - 1][numCols - 1];
       this.rompecabezas[numRows - 1][numCols - 1].textContent = "";
   
-      this.mezclarRompecabezas();
+      if (this.enJuego) {
+        this.mezclarRompecabezas();
+      }
     }
   
     mezclarRompecabezas() {
@@ -66,16 +70,27 @@ class Juego {
   
     iniciarJuego() {
       if (!this.enJuego) {
-        this.inicializar();
-        this.botonInicio.disabled = true;
         this.enJuego = true;
-        let segundos = 0;
+        this.botonInicio.disabled = true;
+        this.inicializar();
+        this.mezclarRompecabezas();
+        this.movimientos = 0;
+        this.contadorSpan.textContent = this.movimientos;
+        this.temporizadorSpan.textContent = "0:00";
         this.intervaloTemporizador = setInterval(() => {
-          segundos++;
-          const minutos = Math.floor(segundos / 60);
-          const segundosFormateados = String(segundos % 60).padStart(2, "0");
-          this.temporizadorSpan.textContent = `${minutos}:${segundosFormateados}`;
+          this.actualizarTemporizador();
         }, 1000);
+      }
+    }
+  
+    actualizarTemporizador() {
+      const segundos = parseInt(this.temporizadorSpan.textContent.split(":")[1]);
+      const minutos = parseInt(this.temporizadorSpan.textContent.split(":")[0]);
+  
+      if (segundos < 59) {
+        this.temporizadorSpan.textContent = minutos + ":" + String(segundos + 1).padStart(2, "0");
+      } else {
+        this.temporizadorSpan.textContent = minutos + 1 + ":00";
       }
     }
   
