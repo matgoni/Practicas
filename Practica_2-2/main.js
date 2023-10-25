@@ -34,6 +34,7 @@ class Juego {
           button.className = "numero";
           this.cuadricula.appendChild(button);
           this.rompecabezas[i][j] = button;
+          button.addEventListener("click", (event) => this.manipularBoton(event));
         }
       }
       this.botonVacio = this.rompecabezas[numRows - 1][numCols - 1];
@@ -56,7 +57,6 @@ class Juego {
             const indiceAleatorio = Math.floor(Math.random() * numerosDesordenados.length);
             const numeroAleatorio = numerosDesordenados.splice(indiceAleatorio, 1)[0];
             this.rompecabezas[i][j].textContent = numeroAleatorio + 1;
-            this.rompecabezas[i][j].addEventListener("click", (event) => this.manipularBoton(event));
           }
         }
       }
