@@ -39,17 +39,16 @@ $('#modal-content').on('click', '#update', () => {
     closeModal();
 });
 
+const buttons = Array.from(document.querySelectorAll('table button'));
+
 // Event listener para abrir el modal de edición
-document.querySelectorAll('table button').forEach((button, index) => {
+buttons.map((button, index) => {
     button.addEventListener('click', () => {
         openModal();
 
-        // Obtener los datos del registro
         const row = button.closest('tr');
-        const title = row.querySelector('td em').textContent;
-        const artist = row.querySelector('td:nth-child(4)').textContent;
-        const year = row.querySelector('td:nth-child(5)').textContent;
-        const genre = row.querySelector('td:last-child').textContent;
+        const rowData = Array.from(row.querySelectorAll('td'));
+        const [title, , , artist, year, genre] = rowData.map(cell => cell.textContent);
 
         // Cargar los datos en el modal
         document.getElementById('title').value = title;
@@ -72,24 +71,12 @@ document.getElementById('update-button').addEventListener('click', () => {
 
     // Actualizar los datos en la tabla
     const rows = document.querySelectorAll('table tbody tr');
-    rows[index].querySelector('td em').textContent = updatedTitle;
-    rows[index].querySelector('td:nth-child(4)').textContent = updatedArtist;
-    rows[index].querySelector('td:nth-child(5)').textContent = updatedYear;
-    rows[index].querySelector('td:last-child').textContent = updatedGenre;
+    const updatedData = [updatedTitle, updatedArtist, updatedYear, updatedGenre];
+
+    rows[index].querySelectorAll('td').forEach((cell, cellIndex) => {
+        cell.textContent = updatedData[cellIndex];
+    });
 
     // Cerrar el modal
     closeModal();
 });
-
-// Función para abrir el modal de edición
-function openModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = 'block';
-}
-
-// Función para cerrar el modal
-function closeModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = 'none';
-}
-
