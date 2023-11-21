@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/matgoni/Practicas/issues"
   },
-  "homepage": "https://github.com/matgoni/Practicas/tree/main#readme"
+  "homepage": "https://github.com/matgoni/Practicas/tree/main#readme",
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
