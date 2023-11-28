@@ -1,0 +1,26 @@
+{
+  "name": "practica_3-1",
+  "version": "1.0.0",
+  "description": "Primeros pasos en Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matgoni/Practicas.git#main"
+  },
+  "keywords": [
+    "inicio",
+    "backend"
+  ],
+  "author": "Ian Mateos, Israel Juarez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matgoni/Practicas/issues"
+  },
+  "homepage": "https://github.com/matgoni/Practicas/tree/main#readme",
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
