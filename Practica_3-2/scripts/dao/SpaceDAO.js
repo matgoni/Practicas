@@ -1,43 +1,56 @@
+// SpaceDAO.js
+
 export default class SpaceDAO {
-    static movies;
+    static missions;
+
     static async injectDB(conn) {
-        if (MoviesDAO.movies) {
+        if (SpaceDAO.missions) {
             return;
         }
         try {
-            MoviesDAO.movies = await conn.db(process.env.MOVIEREVIEWS_NS)
-                .collection('movies');
+            SpaceDAO.missions = await conn.db(process.env.SPACEDB_NS).collection('missions');
         } catch (e) {
-            console.error(`unable to connect in MoviesDAO: ${e}`);
+            console.error(`Unable to connect in SpaceDAO: ${e}`);
         }
     }
 
-    static async getMovies({ // default filter
+    static async getMissions({
         filters = null,
         page = 0,
-        moviesPerPage = 20, // will only get 20 movies at once
+        missionsPerPage = 20,
     } = {}) {
         let query;
         if (filters) {
-            if ('title' in filters) {
-                query = { $text: { $search: filters.title } };
-            } else if ('rated' in filters) {
-                query = { rated: { $eq: filters.rated } };
+            if ('name' in filters) {
+                query = { $text: { $search: filters.name } };
+            } else if ('status' in filters) {
+                query = { status: { $eq: filters.status } };
             }
         }
         let cursor;
         try {
-            cursor = await MoviesDAO.movies
+            cursor = await SpaceDAO.missions
                 .find(query)
-                .limit(moviesPerPage)
-                .skip(moviesPerPage * page);
-            const moviesList = await cursor.toArray();
-            const totalNumMovies = await MoviesDAO.movies.countDocuments(query);
-            return { moviesList, totalNumMovies };
+                .limit(missionsPerPage)
+                .skip(missionsPerPage * page);
+            const missionsList = await cursor.toArray();
+            const totalNumMissions = await SpaceDAO.missions.countDocuments(query);
+            return { missionsList, totalNumMissions };
         } catch (e) {
-            console.error(`Unable to issue find command, ${e}`);
-            return { moviesList: [], totalNumMovies: 0 };
+            console.error(`Unable to issue find command: ${e}`);
+            return { missionsList: [], totalNumMissions: 0 };
         }
     }
 
+    static async getMissionDetails(missionId) {
+        try {
+            const missionDetails = await SpaceDAO.missions.findOne({ _id: missionId });
+            return missionDetails;
+        } catch (e) {
+            console.error(`Unable to fetch mission details: ${e}`);
+            return null;
+        }
+    }
+
+    // Agregar otras operaciones segun sea necesario
 }
