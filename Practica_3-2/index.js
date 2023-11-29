@@ -20,7 +20,7 @@ class Index {
 		Index.app.use(cors());
 		Index.app.use(express.json());
 		Index.app.use(express.urlencoded({ extended: true }));
-		Index.app.use('*', SpaceRoute.configRoutes(Index.router));
+		Index.app.use('/api/v1/space', SpaceRoute.configRoutes(Index.router));
 		Index.app.use('*', (req, res) => {
 			res.status(404).json({ error: 'not found' });
 		});
@@ -28,7 +28,7 @@ class Index {
 	
 	static async setUpDatabase() {
 
-		const client = new mongodb.MongoClient(process.env.MOVIEREVIEWS_DB_URI);
+		const client = new mongodb.MongoClient(process.env.SPACE_DB_URI);
 		const port = process.env.PORT || 8000;
 		console.log(port);
 		try {
