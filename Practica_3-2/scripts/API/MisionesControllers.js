@@ -1,4 +1,4 @@
-import MisionesDAO from '../DAO/MisionesMDAO.js';
+import MisionesDAO from '../DAO/MisionesDAO.js';
 
 export default class MisionesControllers {
     static async apiGetMisiones(req, res, next){
