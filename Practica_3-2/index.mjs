@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import MisionesRoute from './scripts/api/MisionesRoute.js';
+import MisionesRoute from './scripts/API/MisionesRoute.js';
 import MisionesDAO from './scripts/DAO/MisionesDAO.js'
 import dotenv from 'dotenv';
 import mongodb from 'mongodb';
