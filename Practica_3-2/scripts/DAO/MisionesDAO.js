@@ -29,7 +29,7 @@ export default class MisionesDAO{
         try {
             cursor = await MisionesDAO.misiones
                 .find(query)
-                .limit(misionessPerPage)
+                .limit(misionesPerPage)
                 .skip(misionesPerPage * page);
             const misionesList = await cursor.toArray();
             const totalNumMisiones = await MisionesDAO.misiones.countDocuments(query);
