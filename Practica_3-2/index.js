@@ -24,13 +24,13 @@ class Index {
 		Index.app.use(express.urlencoded({ extended: true }));
 		Index.app.use('/api/v1/misiones', MisionesRoute.configRoutes(Index.router));
 		Index.app.use('*', (req, res) => {
-			res.status(404).jso-n({ error: 'not found' });
+			res.status(404).json({ error: 'not found' });
 		});
 	}
 	
 	static async setUpDatabase() {
-		const client = new mongodb.MongoClient(process.env.MISIONES_DB_URI);
-  		console.log('Connection String:', process.env.MISIONES_DB_URI);
+		const client = new mongodb.MongoClient(process.env.SPACE_DB_URI);
+  		console.log('Connection String:', process.env.SPACE_DB_URI);
 		const port = process.env.PORT || 8000;
 		console.log(port);
 		try {
